@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Tab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 60px;
+            letter-spacing: -0.5px;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            width: 100%;
+            background: rgba(40, 40, 40, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 20px 56px 20px 60px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .search-box:focus {
+            background: rgba(50, 50, 50, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon-plus {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.75);
+            pointer-events: none;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 52px;
+            min-width: 120px;
+            padding: 0 18px;
+            border-radius: 28px;
+            border: none;
+            background: linear-gradient(90deg, #6ee7b7, #3b82f6);
+            color: #071023;
+            font-size: 15px;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(59,130,246,0.20);
+            cursor: pointer;
+            transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.03);
+            box-shadow: 0 14px 40px rgba(59,130,246,0.26);
+        }
+        .search-btn:active {
+            transform: translateY(-50%) scale(.99);
+        }
+        .search-btn:focus {
+            outline: 3px solid rgba(59,130,246,0.18);
+            outline-offset: 2px;
+        }
+
+        .search-box {
+            padding: 20px 96px 20px 68px;
+        }
+
+        @media (max-width:560px){
+            .search-btn { min-width:92px; height:44px; font-size:14px; }
+            .search-box { padding:16px 76px 16px 56px; }
+            .icon-plus { font-size:1.6rem; left:14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How can I assist you today?</h1>
+        <div class="search-container">
+            <span class="icon-plus">+</span>
+            <input type="text" class="search-box" id="searchInput" placeholder="Ask Anything to AIIN Assistant">
+            <button class="search-btn" id="searchBtn">🔍</button>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+
+        function goToChat() {
+            const query = searchInput.value.trim();
+            if(!query) return;
+            localStorage.setItem("first_prompt", query);
+            window.location.href = "new2.html";
+        }
+
+        searchBtn.addEventListener('click', (e)=>{
+            e.preventDefault();
+            goToChat();
+        });
+
+        searchInput.addEventListener('keydown', (e)=>{
+            if(e.key === "Enter"){
+                e.preventDefault();
+                goToChat();
+            }
+        });
+    </script>
+</body>
+</html>
