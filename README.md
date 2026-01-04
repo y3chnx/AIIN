@@ -1,5 +1,5 @@
 # AIIN
-[![Watch my youtube video](https://www.youtube.com/watch?v=UF5nGRRQAf4)
+[![Watch My Youtube Video](https://cdn-icons-png.flaticon.com/512/1384/1384060.png)](https://www.youtube.com/watch?v=UF5nGRRQAf4)
 
 AIIN is an open-source web browser featuring a built-in AI assistant that runs entirely on your local machine. It combines a standard tabbed browsing experience with the power of a large language model for assistance, search, and conversation.
 
